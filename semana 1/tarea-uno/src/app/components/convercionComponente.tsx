@@ -2,6 +2,9 @@ import React from 'react'
 import { Temperatura } from '../interfaces/Temperatura';
 
 export default function convercionComponente({celsius}: Temperatura) {
+
+  // crear un objeto con las formulas
+  
   return (
     <div>
       <ol>
