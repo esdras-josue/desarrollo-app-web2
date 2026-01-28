@@ -40,12 +40,10 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <div className="min-h-screen bg-gray-100 flex flex-wrap justify-center items-start p-6">
         {personas.map((persona, index) => (
           <PersonasComponent key={index} persona={persona} />
         ))}
-      </main>
     </div>
   );
 }
