@@ -1,5 +1,6 @@
 "use client"
 import { useState, useEffect } from 'react';
+import BotonIdioma from './components/BotonIdioma';
 
 export default function Home() {
   const palabras = [
@@ -28,8 +29,20 @@ export default function Home() {
   },[idiomaActual]);
 
   return (
-      <div>
-        
-      </div>
+    <>
+      <BotonIdioma 
+        label='Cambiar Idioma Español'
+        idiomaBoton='es'
+        idiomaActual={idiomaActual}
+        CambiarIdioma={setIdioama}
+      />
+      
+      <BotonIdioma 
+        label='Cambiar Idioma Inglés'
+        idiomaBoton='en'
+        idiomaActual={idiomaActual}
+        CambiarIdioma={setIdioama}
+      />
+    </>
   );
 }
