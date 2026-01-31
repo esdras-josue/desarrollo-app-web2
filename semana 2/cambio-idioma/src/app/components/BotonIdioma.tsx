@@ -1,5 +1,5 @@
 import React from "react";
-import {BotonIdiomaProps} from "../interface/BotonIdiomaProps"
+import { BotonIdiomaProps } from "../interface/BotonIdiomaProps";
 
 export default function BotonIdioma({
   label,
@@ -18,7 +18,7 @@ export default function BotonIdioma({
         fontWeight: activo ? "bold" : "normal",
       }}
     >
-        {label}
+      {label}
     </button>
   );
 }
