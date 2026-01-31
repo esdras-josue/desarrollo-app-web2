@@ -1,6 +1,6 @@
 type Idioma = "es" | "en";
 
-interface BotonIdiomaProps {
+export interface BotonIdiomaProps {
     label: string;
     idiomaBoton: Idioma;
     idiomaActual: Idioma;

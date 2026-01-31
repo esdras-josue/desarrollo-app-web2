@@ -1,4 +1,5 @@
 import React from "react";
+import {BotonIdiomaProps} from "../interface/BotonIdiomaProps"
 
 export default function BotonIdioma({
   label,

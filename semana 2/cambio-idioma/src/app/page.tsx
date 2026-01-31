@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import BotonIdioma from './components/BotonIdioma';
 
+
 export default function Home() {
   const palabras = [
     {"es":"casa","en":"House"},
@@ -16,11 +17,11 @@ export default function Home() {
     {"es":"Carro","en":"Car"}
   ]
 
-  const [ idiomaActual, setIdioama] = useState<"es" | "en">("es");
+  const [ idiomaActual, setIdioma] = useState<"es" | "en">("es");
   const [ listaMostrada, setListaMostrada] = useState<string[]>([])
 
   useEffect(() =>{
-    const resultado = palabras.map((item, index) => {
+    const resultado = palabras.map((item) => {
       return idiomaActual === "es" ? item.es : item.en; 
     });
 
@@ -30,19 +31,52 @@ export default function Home() {
 
   return (
     <>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "10px",
+          marginBottom: "20",
+        }}
+      >
       <BotonIdioma 
         label='Cambiar Idioma Español'
         idiomaBoton='es'
         idiomaActual={idiomaActual}
-        CambiarIdioma={setIdioama}
+        CambiarIdioma={setIdioma}
       />
-      
       <BotonIdioma 
         label='Cambiar Idioma Inglés'
         idiomaBoton='en'
         idiomaActual={idiomaActual}
-        CambiarIdioma={setIdioama}
+        CambiarIdioma={setIdioma}
       />
+      </div>
+   
+      <ul style={{
+        listStyle: "none",
+        padding: 0,
+        maxWidth: "300px",
+        margin: "20 auto",
+      }}
+      >
+        {listaMostrada.map((palabras, index) =>(
+          <li 
+          key={index}
+          style={{
+            padding: "10px",
+            marginBottom: "8px",
+            backgroundColor: "#f2f2f2",
+            borderRadius: "6px",
+            textAlign: "center",
+            color: "#000000",
+            fontWeight: "500",
+          }}
+          >
+            {palabras}
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
