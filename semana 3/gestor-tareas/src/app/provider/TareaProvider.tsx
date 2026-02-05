@@ -10,16 +10,18 @@ interface viewReact {
 export default function TareaProvider({children}: viewReact) {
 
   const [ tareas, setTareas ] = useState<Tarea[]>([]);
+  const [id, setId] = useState(1);
 
   function agregarTarea(titulo: string, descripcion: string){
     const nuevaTarea: Tarea = {
-      id: tareas.length +1,
+      id: id,
       titulo,
       descripcion,
       estado: "Pendiente",
     };
 
     setTareas([ ...tareas, nuevaTarea]);
+    setId(id+1);
   }
 
   function cambiarEstado(id: number, estado:string) {
