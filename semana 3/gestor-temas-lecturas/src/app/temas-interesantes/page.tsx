@@ -1,6 +1,7 @@
-import link from 'next/link';
+"use client";
+import Link from 'next/link';
 import { useTema } from "../provider/TemasProvider";
-import React from 'react'
+
 
 export default function page() {
     const { temas } = useTema();
@@ -27,10 +28,9 @@ export default function page() {
                 </div>
             ))
         )}
-
-        <link href='/'>
+        <Link href='/'>
             <button>Volver</button>
-        </link>
+        </Link>
     </main>
   );
 }

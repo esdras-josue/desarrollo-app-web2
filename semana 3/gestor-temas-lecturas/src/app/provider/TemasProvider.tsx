@@ -1,3 +1,4 @@
+'use client';
 import React, { useContext, useEffect, useState } from 'react'
 import { ViewReact } from '../models/ViewReact'
 import { Temas } from '../models/Temas';
@@ -5,13 +6,15 @@ import { TemasContext } from '../context/TemasContext';
 
 export default function TemasProvider({children}: ViewReact) {
     const [ temas, setTemas ] = useState<Temas[]>([]);
+    //const [ id, setId ] = useState(1);
 
     useEffect(() => {
         const lista: Temas[] = [];
         for(let i = 1; i <= 20; i++) {
-            lista.push({id: 1, titulo: "Tema" + i, interesante: false});
+            lista.push({id: i, titulo: "Tema" + i, interesante: false});
         }
-
+        
+        
         setTemas(lista);
     },[]);
 
