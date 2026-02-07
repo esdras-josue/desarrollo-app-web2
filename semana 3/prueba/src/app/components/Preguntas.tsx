@@ -10,6 +10,13 @@ export default function Preguntas() {
   const [seleccion, setSeleccion] = useState<boolean | null>(null);
   const [mensaje, setMensaje] = useState("");
 
+  function reiniciarTrivia() {
+    reiniciarJuego();
+    setIndice(0);
+    setSeleccion(null);
+    setMensaje("")
+  }
+
   useEffect(() => {
     const lista = [
       {
@@ -109,7 +116,7 @@ export default function Preguntas() {
           {indice < preguntas.length - 1 ? (
             <button onClick={siguiente}>Siguiente</button>
           ) : (
-            <button onClick={reiniciarJuego}>Reiniciar Trivia</button>
+            <button onClick={reiniciarTrivia}>Reiniciar Trivia</button>
           )}
         </div>
       )}
