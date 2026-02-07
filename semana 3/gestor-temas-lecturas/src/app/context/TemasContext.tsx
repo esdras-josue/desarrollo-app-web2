@@ -1,11 +1,8 @@
 "use client";
-
 import React, {createContext,useContext, useEffect, useState} from 'react'
+import { Temas } from '../models/Temas';
 
-export default function TemasContext() {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+export const TemasContext = createContext({
+  temas: [] as Temas[],
+  marcarInteresante: (id: number) => {},
+});
