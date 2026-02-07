@@ -21,7 +21,7 @@ export default function Preguntas() {
     const lista = [
       {
         idPregunta: 1,
-        descripcion: "Brasil es la selección de futbol con mas copas del mundo",
+        descripcion: "Messi es el jugador con mas balones de oro.",
         opcionRespuesta1: true,
         opcionRespuesta2: false,
         respuestaCorrecta: true,
@@ -29,7 +29,8 @@ export default function Preguntas() {
       },
       {
         idPregunta: 2,
-        descripcion: "Cristiano Ronaldo es el maximo goleador del Real Madrid.",
+        descripcion:
+          "Cristiano Ronaldo es el jugador con mas goles en la historia del futbol.",
         opcionRespuesta1: true,
         opcionRespuesta2: false,
         respuestaCorrecta: true,
@@ -45,7 +46,7 @@ export default function Preguntas() {
       },
       {
         idPregunta: 4,
-        descripcion: "Olimpia es el club mas Titulos ganados en Honduras.",
+        descripcion: "Olimpia es el club mas galardonado en Honduras.",
         opcionRespuesta1: true,
         opcionRespuesta2: false,
         respuestaCorrecta: true,
@@ -53,7 +54,7 @@ export default function Preguntas() {
       },
       {
         idPregunta: 5,
-        descripcion: "Honduras de ha clasificado a todos los mundiales de la FIFA.",
+        descripcion: "Honduras de ha clasificado a 5 mundiales de la FIFA.",
         opcionRespuesta1: true,
         opcionRespuesta2: false,
         respuestaCorrecta: false,
