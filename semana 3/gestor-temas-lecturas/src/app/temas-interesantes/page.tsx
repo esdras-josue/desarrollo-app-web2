@@ -8,29 +8,36 @@ export default function page() {
     const temasInteresantes = temas.filter((tema) => tema.interesante);
 
   return (
-    <main style={{ padding: 24}}>
-        <h1>Pantalla Temas Interesantes</h1>
+    <main className="max-w-2xl mx-auto p-6">
 
-        {temasInteresantes.length === 0 ? (
-            <p>No hay temas interesantes.</p>
-        ) : (
-            temasInteresantes.map((tema) => (
-                <div
-                  key={tema.id}
-                  style={{
-                    padding: 12,
-                    border: "1px solid #ddd",
-                    borderRadius: 8,
-                    marginBottom : 10,
-                  }}
-                >
-                    {tema.titulo}
-                </div>
-            ))
-        )}
-        <Link href='/'>
-            <button>Volver</button>
-        </Link>
-    </main>
+  <h1 className="text-2xl font-bold mb-6">
+    Temas Interesantes
+  </h1>
+
+  {temasInteresantes.length === 0 ? (
+    <p className="text-gray-400">
+      No hay temas interesantes.
+    </p>
+  ) : (
+    <div className="space-y-3">
+      {temasInteresantes.map((tema) => (
+        <div
+          key={tema.id}
+          className="border rounded-lg p-4
+                     bg-gray-900 border-green-600"
+        >
+          {tema.titulo}
+        </div>
+      ))}
+    </div>
+  )}
+
+  <Link href="/">
+    <button className="mt-6 bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded-md">
+      Volver
+    </button>
+  </Link>
+
+</main>
   );
 }
