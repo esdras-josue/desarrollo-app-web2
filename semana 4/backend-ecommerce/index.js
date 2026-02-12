@@ -1,8 +1,10 @@
 const express = require('express')
+const cors = require('cors');
 const Producto = require('./Modelos/Producto')
 
 const app = express()
 
+app.use(cors());
 app.use(express.json())
 
 
