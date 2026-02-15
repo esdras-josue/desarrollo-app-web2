@@ -1,31 +1,33 @@
 'use client'
 import CardProducto from '@/app/components/CardProducto'
 import EliminarCarrito from '@/app/components/EliminarCarrito'
+import { Carrito } from '@/app/modelos/Carrito'
 import { Producto } from '@/app/modelos/Producto'
 import { useProducto } from '@/app/providers/ProviderProducto'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default function page() {
 
-    const { carrito } = useProducto()
+    const { carrito, obtenerCarrito } = useProducto()
+
+    useEffect(() => {
+        obtenerCarrito();
+    },[]);
+
     return (
         <div className='content'>
             <div className='row'>
                 {
-                    carrito.map((item: Producto) => (
-                        <div className='col-md-3' key={item.id}> <br />
+                    carrito.map((item) => (
+                        <div className='col-md-3' key={item.idCarrito}> <br />
                             <div className='card'>
                                 <div className='card-body'>
-                                 <CardProducto {...item}></CardProducto>
+                                 <CardProducto {...item.producto}></CardProducto>
                                 </div>
                                 <div className='card-footer'>
-                                      <EliminarCarrito></EliminarCarrito>
+                                      <EliminarCarrito idCarrito={item.idCarrito}></EliminarCarrito>
                                 </div>
-
                             </div>
-
-                           
-                          
                         </div>
 
                     ))
