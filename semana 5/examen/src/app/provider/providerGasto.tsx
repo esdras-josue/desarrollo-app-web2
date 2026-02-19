@@ -1,9 +1,10 @@
+'use client';
 import React, { useContext, useEffect, useState } from 'react'
 import { Gasto } from '../models/Gasto';
 import { GastoContext } from '../context/GastoContext';
 import { Plantilla } from '../models/Plantilla';
 
-export default function providerGasto({children}: Plantilla) {
+export default function ProviderGasto({children}: Plantilla) {
     const [ presupuesto, setPresupuesto ] = useState(0);
     const [ gastos, setGastos ] = useState<Gasto[]>([]);
     const [ categorias, setCaegoria ] = useState<string[]>([
@@ -44,7 +45,8 @@ export default function providerGasto({children}: Plantilla) {
     }
 
     function agregarCategoria(nombre: string){
-        const limpiar = nombre;
+        const limpiar = nombre.trim();
+        if (!limpiar) return;
         const existeCategoria = categorias.some((categoria) => categoria === limpiar)
         if(existeCategoria) return;
 
