@@ -23,57 +23,58 @@ export default function Page() {
   const [nuevaCategoria, setNuevaCategoria] = useState("");
 
   return (
-    <div className="p-6 space-y-6">
-      <h1 className="text-2x1 font-bold">Dashboard</h1>
+    <div className="min-h-screen bg-zinc-100 p-6 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+      <div className="mx-auto max-w-3xl space-y-6">
+      <h1 className="text-2xl font-bold">Dashboard</h1>
 
       {/** ALERTAS */}
-      {estadoPresupuesto === "warming" && (
-        <div className="bg-yellow-200 p-3 rounded">
+      {estadoPresupuesto === "warning" && (
+        <div className="rounded-lg border border-yellow-300 bg-yellow-100 p-3 text-yellow-900 dark:border-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-200">
           Has alcanzado el 80% del presupuesto
         </div>
       )}
 
       {estadoPresupuesto === "over" && (
-        <div className="bg-red-300 p-3 rounded">
+        <div className="rounded-lg border border-red-300 bg-red-100 p-3 text-red-900 dark:border-red-800 dark:bg-red-900/30 dark:text-red-200">
           Has superado el limite del presupuesto, debes ajustar gastos
         </div>
       )}
 
       {/**Presupuesto */}
-      <div className="bg-white p-4 shadow rounded">
-        <h2>Presupuesto mensual</h2>
+      <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+        <h2 className="mb-2 text-lg font-semibold">Presupuesto mensual</h2>
 
-        <p>Presupuesto: {presupuesto}</p>
-        <p>Total gastado: {totalGastado}</p>
-        <p>{porcentajeGastado}%</p>
+        <p className="text-sm">Presupuesto: {presupuesto}</p>
+        <p className="text-sm">Total gastado: {totalGastado}</p>
+        <p className="mb-3 text-sm font-medium">{porcentajeGastado}%</p>
 
         <input
           placeholder="Nuevo presupuesto"
           value={inputPresupuesto}
           onChange={(e) => setInputPresupuesto(e.target.value)}
-          className="border p-2"
+          className="mr-2 rounded-md border border-zinc-300 bg-white p-2 text-zinc-900 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:focus:ring-blue-900"
         />
 
         <button
           onClick={() => setPresupuesto(Number(inputPresupuesto))}
-          className="bg-blue-500 text-white p-2"
+          className="rounded-md bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
         >
           Guardar
         </button>
       </div>
 
-      <div className="bg-white p-4 shadow rounded space-y-2">
+      <div className="space-y-2 rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
         <input
           placeholder="Monto"
           value={monto}
           onChange={(e) => setMonto(e.target.value)}
-          className="border p-2"
+          className="w-full rounded-md border border-zinc-300 bg-white p-2 text-zinc-900 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:focus:ring-blue-900"
         />
 
         <select
           value={categoria}
           onChange={(e) => setCategoria(e.target.value)}
-          className="border p-2"
+          className="w-full rounded-md border border-zinc-300 bg-white p-2 text-zinc-900 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:focus:ring-blue-900"
         >
           {categorias.map((c) => (
             <option key={c}>{c}</option>
@@ -84,7 +85,7 @@ export default function Page() {
           type="date"
           value={fecha}
           onChange={(e) => setFecha(e.target.value)}
-          className="border p-2"
+          className="w-full rounded-md border border-zinc-300 bg-white p-2 text-zinc-900 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:focus:ring-blue-900"
         />
 
         <button
@@ -97,35 +98,36 @@ export default function Page() {
               descripcion,
             })
           }
-          className="bg-green-500 text-white p-2"
+          className="rounded-md bg-emerald-600 px-4 py-2 text-white transition hover:bg-emerald-700"
         >
           Agregar gasto
         </button>
       </div>
       {/**Nueva categoria */}
-      <div>
+      <div className="space-y-2 rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
         <input
           placeholder="Nueva categoria"
           value={nuevaCategoria}
           onChange={(e) => setNuevaCategoria(e.target.value)}
-          className="border p-2"
+          className="mr-2 rounded-md border border-zinc-300 bg-white p-2 text-zinc-900 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:focus:ring-blue-900"
         />
 
         <button
           onClick={() => agregarCategoria(nuevaCategoria)}
-          className="bg-black text-white p-2"
+          className="rounded-md bg-zinc-900 px-4 py-2 text-white transition hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white"
         >
           Agregar categoria
         </button>
       </div>
 
-      <div className="bg-white p-4 shadow rounded">
+      <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
         {gastos.map((g,i)=>(
-            <div key={i}>
+            <div key={i} className="border-b border-zinc-200 py-2 text-sm last:border-b-0 dark:border-zinc-700">
                 {g.categoria} - {g.monto} - {g.fecha}
             </div>
         ))}
 
+      </div>
       </div>
     </div>
   );
