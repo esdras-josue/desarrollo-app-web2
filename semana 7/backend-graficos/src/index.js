@@ -9,7 +9,7 @@ app.use(express.json());
 
 /* 1. contar productos en la tabla
 select COUNT(*) AS Productos FROM product_v6 */
-app.get('/api/productos/count-producto', async (req, res) =>{
+app.get('/api/producto/count-producto', async (req, res) =>{
     try {
         const data = await Producto.findAll({
             attributes:[
@@ -30,30 +30,9 @@ app.get('/api/productos/count-producto', async (req, res) =>{
     }
 });
 
-/* 2. Calcular el valor total de todos los productos
-select sum(value) as valorTotal from product_v6 */
-app.get('/api/productos/total-value', async (req, res) =>{
-    try {
-        const data = await Producto.findAll({
-            attributes: [
-                [sequelize.fn('SUM', sequelize.col('value')), 'valorTotal']
-            ]
-        });
-
-        if(data.length === 0 ){
-            return res.status(404).json({ message: 'No se encontraron datos' });
-        }
-
-        res.status(200).json(data);
-
-    } catch (error) {
-        res.status(500).json({ message: 'Error al obtener datos', error: error.message });
-    }
-});
-
 /* 9. Encontar el valor maximo y minimo de productType 
 select productType, min(value) as valorMinimo, max(value) as valorMaximo from product_v6 group by productType*/
-app.get('/api/productos/min-max-by-type', async (req, res) => {
+app.get('/api/producto/min-max-by-type', async (req, res) => {
     try {
         const data = await Producto.findAll({
             attributes: [
@@ -72,6 +51,51 @@ app.get('/api/productos/min-max-by-type', async (req, res) => {
 
     } catch (error) {
         res.status(500).json({ message: 'Error al obtener datos', error: error.message});
+    }
+});
+
+/**-- 7. Calcular el valor promedio de los productos por cada tipo de moneda (valueCurrency)
+select valueCurrency, avg(value) as promedioProductos from product_v6 group by valueCurrency;  SE QUEDA*/
+app.get('/api/producto/avg-producto-value', async (req, resp) =>{
+    try {
+        const data = await Producto.findAll({
+            attributes: [
+                'valueCurrency',
+                [sequelize.fn('AVG', sequelize.col('value')), 'promedioProductos']],
+            group: ['valueCurrency'],
+        });
+
+        if(data.length === 0) {
+            resp.status(404).json({ message: 'No se encontaron datos' });
+        }
+        else{
+            resp.status(200).json(data);
+        }
+    } catch (error) {
+        resp.status(500).json({ message: 'Erorr al obtener los datos', error: error.message });
+    }
+});
+
+/**-- 12. Calcular el valor total de productos en cada brandCode:
+select brandCode, sum(value) valorTotal from product_v6 group by brandCode; */
+app.get('/api/producto/total-value-brand', async (req, resp) => {
+    try {
+        const data = await Producto.findAll({
+            attributes: [
+                'brandCode',
+                [sequelize.fn('SUM', sequelize.col('value')), 'valorTotal']
+            ],
+            group: ['brandCode'],
+        });
+
+        if(data.length === 0){
+            resp.status(404).json({ message: 'No se encontaron datos' });
+        }
+        else{
+            resp.status(200).json(data);
+        }
+    } catch (error) {
+        resp.status(500).json({ message: 'Error al obtener los datos', error: error.message });
     }
 });
 
