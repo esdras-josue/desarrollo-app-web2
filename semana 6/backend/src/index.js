@@ -1,9 +1,6 @@
 const express = require('express');
 const sequelize = require('../db/conexion');
 const Producto = require('../models/Product');
-const { group } = require('console');
-const { Sequelize } = require('sequelize');
-
 
 const app = express();
 app.use(express.json());

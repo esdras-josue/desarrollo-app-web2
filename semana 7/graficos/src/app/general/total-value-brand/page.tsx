@@ -1,6 +1,7 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from "react";
+import { fetchTotalValueBrand } from "@/app/service/api";
+import { useRouter } from "next/navigation";
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -11,7 +12,6 @@ import {
   Tooltip,
   Legend
 } from 'chart.js';
-import { fetchMinMaxValue } from '@/app/service/api';
 
 ChartJS.register(
   CategoryScale,
@@ -42,73 +42,59 @@ export default function Page() {
     },
     scales: {
       x: {
-        stacked: false,
         grid: {
           color: 'rgba(148, 163, 184, 0.18)',
-          ticks: {color: '#334155'}
         },
         ticks: {
           color: '#334155',
         },
       },
       y: {
-        stacked: false,
+        beginAtZero: true,
         grid: {
           color: 'rgba(148, 163, 184, 0.22)',
         },
         ticks: {
-          stacked: false,
           color: '#334155',
-          ticks: { color: '#334155' },
-          beginAtZero: true
         },
       },
     },
   };
 
   useEffect(() => {
-    fetchMinMaxValue()
+    fetchTotalValueBrand()
       .then((data) => {
         setError('');
-        const labels = data.map((item: any) => item.productType);
-        const minValues = data.map((item: any) => Number(item.valorMinimo));
-        const maxValues = data.map((item: any) => Number(item.valorMaximo));
+        const labels = data.map((item: any) => item.brandCode);
+        const totalValues = data.map((item: any) => Number(item.valorTotal));
 
         setChartData({
           labels,
           datasets: [
             {
-              label: 'Valor Minimo',
-              data: minValues,
-              backgroundColor: 'rgba(29, 78, 216, 0.75)',
-              borderColor: 'rgba(30, 64, 175, 1)',
-              borderWidth: 1.6,
-              borderRadius: 8,
-            },
-            {
-              label: 'Valor Maximo',
-              data: maxValues,
-              backgroundColor: 'rgba(234, 88, 12, 0.78)',
-              borderColor: 'rgba(194, 65, 12, 1)',
+              label: 'Valor total de productos por marca',
+              data: totalValues,
+              backgroundColor: 'rgba(16, 185, 129, 0.75)',
+              borderColor: 'rgba(5, 150, 105, 1)',
               borderWidth: 1.6,
               borderRadius: 8,
             }
-          ],
+          ]
         });
       })
       .catch((err) => {
-        console.error('Error cargando min-max por tipo:', err);
+        console.error('Error cargando total por marca:', err);
         setError('No se pudieron cargar los datos.');
       });
   }, []);
 
   return (
     <div className="mx-auto min-h-screen w-full max-w-5xl px-4 py-8">
-      <section className="rounded-2xl border border-blue-100 bg-white/90 p-6 shadow-lg shadow-blue-900/10 backdrop-blur md:p-8">
+      <section className="rounded-2xl border border-emerald-100 bg-white/90 p-6 shadow-lg shadow-emerald-900/10 backdrop-blur md:p-8">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h1 className="text-2xl font-bold text-slate-900 md:text-3xl">Valores Minimos y Maximos</h1>
-            <p className="mt-1 text-sm text-slate-600">Comparacion por tipo de producto entre valor minimo y valor maximo.</p>
+            <h1 className="text-2xl font-bold text-slate-900 md:text-3xl">Valor Total por Marca</h1>
+            <p className="mt-1 text-sm text-slate-600">Comparacion del valor total acumulado de productos por marca.</p>
           </div>
           <button
             type="button"

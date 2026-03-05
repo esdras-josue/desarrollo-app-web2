@@ -32,3 +32,14 @@ export const fetchMinMaxValue = async () => {
         throw error;
     } 
 };
+
+export const fetchTotalValueBrand = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/total-value-brand`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener los datos:", error);
+        throw error;
+    }
+};
+//total-value-brand
