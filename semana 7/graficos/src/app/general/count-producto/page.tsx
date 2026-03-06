@@ -35,8 +35,8 @@ export default function CountProductoChart() {
             {
               label: "Total de productos",
               data: [total],
-              backgroundColor: "rgba(14, 165, 233, 0.75)",
-              borderColor: "rgba(3, 105, 161, 1)",
+              backgroundColor: "rgba(59, 130, 246, 0.74)",
+              borderColor: "rgba(37, 99, 235, 1)",
               borderWidth: 1.5,
               borderRadius: 10,
             }

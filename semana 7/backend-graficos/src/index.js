@@ -30,6 +30,30 @@ app.get('/api/producto/count-producto', async (req, res) =>{
     }
 });
 
+/* -- 4. Encontrar el producto con el valor más alto
+-- select name, value from product_v6 where value = (select max(value) from product_v6);
+select productType, max(value) valorMaximo from product_v6 group by productType; */
+app.get('/api/producto/high-value-products', async(req, res) => {
+    try {
+        const data = await Producto.findAll({
+            attributes: [
+                'productType',
+                [sequelize.fn('Max', sequelize.col('value')), 'valorMaximo']
+            ],
+            group: ['productType'],
+        });
+
+        if(data.length === 0){
+            return res.status(404).json({ message: 'No se encontraros datos' });
+        }
+
+        res.status(200).json(data);
+
+    } catch (error) {
+        res.status(500).json({ message: 'Error al obtener los datos', error: error.message });
+    }
+});
+
 /* 9. Encontar el valor maximo y minimo de productType 
 select productType, min(value) as valorMinimo, max(value) as valorMaximo from product_v6 group by productType*/
 app.get('/api/producto/min-max-by-type', async (req, res) => {

@@ -42,4 +42,13 @@ export const fetchTotalValueBrand = async () => {
         throw error;
     }
 };
-//total-value-brand
+
+export const fetchHighValueProduct = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/high-value-products`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener los datos:", error);
+        throw error;
+    }
+};

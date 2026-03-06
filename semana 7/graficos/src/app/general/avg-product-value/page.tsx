@@ -51,8 +51,8 @@ export default function Page() {
             {
               label: 'Valor promedio de Productos',
               data: valores,
-              backgroundColor: 'rgba(8, 145, 178, 0.75)',
-              borderColor: 'rgba(14, 116, 144, 1)',
+              backgroundColor: 'rgba(20, 184, 166, 0.74)',
+              borderColor: 'rgba(13, 148, 136, 1)',
               borderWidth: 1.5,
               borderRadius: 8,
             },

@@ -80,16 +80,16 @@ export default function Page() {
             {
               label: 'Valor Minimo',
               data: minValues,
-              backgroundColor: 'rgba(29, 78, 216, 0.75)',
-              borderColor: 'rgba(30, 64, 175, 1)',
+              backgroundColor: 'rgba(125, 211, 252, 0.78)',
+              borderColor: 'rgba(56, 189, 248, 1)',
               borderWidth: 1.6,
               borderRadius: 8,
             },
             {
               label: 'Valor Maximo',
               data: maxValues,
-              backgroundColor: 'rgba(234, 88, 12, 0.78)',
-              borderColor: 'rgba(194, 65, 12, 1)',
+              backgroundColor: 'rgba(56, 189, 248, 0.76)',
+              borderColor: 'rgba(2, 132, 199, 1)',
               borderWidth: 1.6,
               borderRadius: 8,
             }

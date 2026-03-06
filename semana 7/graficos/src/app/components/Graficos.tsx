@@ -18,7 +18,7 @@ export default function Graficos() {
           <button
             type="button"
             onClick={() => router.push('/general/count-producto')}
-            className="rounded-xl bg-sky-600 px-5 py-3 text-left text-base font-semibold text-white shadow-md shadow-sky-600/30 transition hover:-translate-y-0.5 hover:bg-sky-700"
+            className="rounded-xl bg-blue-500 px-5 py-3 text-left text-base font-semibold text-white shadow-md shadow-blue-500/30 transition hover:-translate-y-0.5 hover:bg-blue-600"
           >
             Gráfico de total de productos
           </button>
@@ -26,7 +26,7 @@ export default function Graficos() {
           <button
             type="button"
             onClick={() => router.push('/general/avg-product-value')}
-            className="rounded-xl bg-cyan-600 px-5 py-3 text-left text-base font-semibold text-white shadow-md shadow-cyan-600/30 transition hover:-translate-y-0.5 hover:bg-cyan-700"
+            className="rounded-xl bg-teal-500 px-5 py-3 text-left text-base font-semibold text-white shadow-md shadow-teal-500/30 transition hover:-translate-y-0.5 hover:bg-teal-600"
           >
             Gráfico de promedios por moneda
           </button>
@@ -34,7 +34,7 @@ export default function Graficos() {
           <button
             type="button"
             onClick={() => router.push('/general/min-max-by-type')}
-            className="rounded-xl bg-indigo-600 px-5 py-3 text-left text-base font-semibold text-white shadow-md shadow-indigo-600/30 transition hover:-translate-y-0.5 hover:bg-indigo-700"
+            className="rounded-xl bg-sky-400 px-5 py-3 text-left text-base font-semibold text-white shadow-md shadow-sky-400/30 transition hover:-translate-y-0.5 hover:bg-sky-500"
           >
             Gráfico de valores mínimos y máximos
           </button>
@@ -42,9 +42,17 @@ export default function Graficos() {
           <button
             type="button"
             onClick={() => router.push('/general/total-value-brand')}
-            className="rounded-xl bg-sky-600 px-5 py-3 text-left text-base font-semibold text-white shadow-md shadow-sky-600/30 transition hover:-translate-y-0.5 hover:bg-sky-700"
+            className="rounded-xl bg-violet-500 px-5 py-3 text-left text-base font-semibold text-white shadow-md shadow-violet-500/30 transition hover:-translate-y-0.5 hover:bg-violet-600"
           >
             Grafico del promedio del valor por marca
+          </button>
+
+          <button
+            type="button"
+            onClick={() => router.push('/general/high-value-product')}
+            className="rounded-xl bg-indigo-500 px-5 py-3 text-left text-base font-semibold text-white shadow-md shadow-indigo-500/30 transition hover:-translate-y-0.5 hover:bg-indigo-600"
+          >
+            Grafico del los productos con valores mas altos
           </button>
         </div>
       </main>

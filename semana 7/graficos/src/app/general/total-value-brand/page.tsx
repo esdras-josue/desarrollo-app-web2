@@ -74,8 +74,8 @@ export default function Page() {
             {
               label: 'Valor total de productos por marca',
               data: totalValues,
-              backgroundColor: 'rgba(16, 185, 129, 0.75)',
-              borderColor: 'rgba(5, 150, 105, 1)',
+              backgroundColor: 'rgba(139, 92, 246, 0.74)',
+              borderColor: 'rgba(124, 58, 237, 1)',
               borderWidth: 1.6,
               borderRadius: 8,
             }
