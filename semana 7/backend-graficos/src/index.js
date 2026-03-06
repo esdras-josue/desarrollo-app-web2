@@ -20,7 +20,7 @@ app.get('/api/producto/count-producto', async (req, res) =>{
         });
 
         if(data.length === 0) {
-            return res.status(404).json({ message: 'No se encontaron productos'});
+            return res.status(400).json({ message: 'No se encontaron productos'});
         }
 
         res.status(200).json(data);
@@ -44,7 +44,7 @@ app.get('/api/producto/high-value-products', async(req, res) => {
         });
 
         if(data.length === 0){
-            return res.status(404).json({ message: 'No se encontraros datos' });
+            return res.status(400).json({ message: 'No se encontraros datos' });
         }
 
         res.status(200).json(data);
@@ -68,7 +68,7 @@ app.get('/api/producto/min-max-by-type', async (req, res) => {
         });
         
         if(data.length === 0){
-            return res.status(404).json({ message: 'No se encontraron datos' });
+            return res.status(400).json({ message: 'No se encontraron datos' });
         }
 
         res.status(200).json(data);
@@ -90,7 +90,7 @@ app.get('/api/producto/avg-producto-value', async (req, resp) =>{
         });
 
         if(data.length === 0) {
-            resp.status(404).json({ message: 'No se encontaron datos' });
+            resp.status(400).json({ message: 'No se encontaron datos' });
         }
         else{
             resp.status(200).json(data);
@@ -113,7 +113,7 @@ app.get('/api/producto/total-value-brand', async (req, resp) => {
         });
 
         if(data.length === 0){
-            resp.status(404).json({ message: 'No se encontaron datos' });
+            resp.status(400).json({ message: 'No se encontaron datos' });
         }
         else{
             resp.status(200).json(data);
