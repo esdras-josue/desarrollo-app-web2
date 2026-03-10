@@ -2,7 +2,10 @@ const express = require('express');
 const sequelize = require('../db/conexion');
 const Producto = require('../models/Product');
 
+var cors = require('cors')
+
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 /* -- 1. Contar productos en la tabla:
