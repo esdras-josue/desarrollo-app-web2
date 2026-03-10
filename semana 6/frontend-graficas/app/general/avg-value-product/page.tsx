@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import {fetchTotalProductsValues} from '@/app/service/api';
+import { fetchAvgValueProduct } from "@/app/service/api";
 import { useRouter } from "next/navigation";
 import "@/app/chartConfig";
 import { Bar } from "react-chartjs-2";
@@ -8,27 +8,28 @@ import { ChartDataType } from "@/app/Types/chart";
 
 export default function page() {
   const router = useRouter();
-  const [loading, setLoading] = useState(true);
   const [chartData, setChartData] = useState<ChartDataType>({
     labels: [],
     datasets: [
       {
-        label: "Total de Productos",
+        label: "avg value products",
         data: [],
       },
     ],
   });
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    fetchTotalProductsValues()
+    fetchAvgValueProduct()
       .then((data) => {
         if (data.length > 0) {
           setChartData({
-            labels: ["Valor Total del producto"],
+            labels: ["Avg Value"],
             datasets: [
               {
-                label: "Valor del Producto",
-                data: data.map((item: any) => item.valorTotal),
+                label: "Valor promedio de los productos",
+                data: data.map((item: any) => item.valorPromedio),
                 backgroundColor: "rgba(59, 130, 246, 0.4)",
                 borderColor: "rgba(59, 130, 246, 1)",
                 borderWidth: 2,
@@ -65,21 +66,21 @@ export default function page() {
     },
   };
 
-  if (loading) {
+  if(loading){
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <p className="text-lg font-medium text-gray-600">
-          Cargando información...
-        </p>
-      </div>
+        <div className="flex min-h-screen items-center justify-center">
+            <p className="text-lg font-medium text-gray-600">
+                cargando informacion...
+            </p>
+        </div>
     );
   }
 
-  return (
+  return(
     <div className="flex min-h-screen items-center justify-center bg-gray-50 p-6">
       <div className="w-full max-w-2xl rounded-2xl bg-white p-6 shadow-lg">
         <h2 className="mb-4 text-center text-xl font-semibold text-gray-700">
-          Gráfico de valor total de productos
+          Gráfico promedio de productos
         </h2>
         <div className="w-full">
           <Bar data={chartData} options={options} />
@@ -95,5 +96,5 @@ export default function page() {
         </div>
       </div>
     </div>
-  );
+  )
 }
