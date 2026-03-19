@@ -32,3 +32,23 @@ export const fetchAvgValueProduct = async () => {
         throw error;
     }
 };
+
+export const fetchMaxValue = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/max-value`);
+        return response.data;
+    } catch (error) {
+        console.error('Error en fetchMaxValue:', error);
+        throw error;
+    }
+};
+
+export const fetchMinValue = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/min-value`);
+        return response.data;
+    } catch (error) {
+        console.error('Error al obtener datos', error);
+        throw error;
+    }
+};

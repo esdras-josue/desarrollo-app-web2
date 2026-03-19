@@ -52,6 +52,30 @@ export default function Home() {
             <span className="text-xl">📊</span>
           </button>
         </div>
+
+        <div className="mt-10 grid gap-5">
+          <button
+            type="button"
+            onClick={() => router.push("/general/max-value")}
+            className="flex items-center justify-between rounded-xl bg-blue-500 px-6 py-4 text-left text-base font-semibold text-white shadow-md shadow-blue-500/30 transition-all hover:-translate-y-1 hover:bg-blue-600 hover:shadow-lg"
+          >
+            <span>Gráfico del valor maximo de productos</span>
+
+            <span className="text-xl">📊</span>
+          </button>
+        </div>
+
+        <div className="mt-10 grid gap-5">
+          <button
+            type="button"
+            onClick={() => router.push("/general/min-value")}
+            className="flex items-center justify-between rounded-xl bg-blue-500 px-6 py-4 text-left text-base font-semibold text-white shadow-md shadow-blue-500/30 transition-all hover:-translate-y-1 hover:bg-blue-600 hover:shadow-lg"
+          >
+            <span>Gráfico del valor minimo</span>
+
+            <span className="text-xl">📊</span>
+          </button>
+        </div>
       </main>
     </div>
   );
