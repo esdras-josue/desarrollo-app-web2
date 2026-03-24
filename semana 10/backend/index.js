@@ -29,6 +29,27 @@ app.get('/api/sum-salary-by-depto', async (req, res) => {
     }
 });
 
+app.get('/api/high-min-values/products', async(req,res) =>{
+    try {
+        const data = await Product.findAll({
+            attributes: [
+                'productType',
+                [sequelize.fn('Max', sequelize.col('value')), 'minValue'],
+                [sequelize.fn('MIN',sequelize.col('value')), 'maxValue']
+            ],
+            group: ['productType'],
+        });
+
+        if(data === 0){
+            return res.status(400).json({ message: 'No se encontraron datos' });
+        }
+
+        res.status(200).json(data);
+    } catch (error) {
+        res.status(500).json({ message: 'Error al obtener datos', error: error.message});
+    }
+});
+
 
 const PORT = 5000;
 app.listen(PORT, () => {

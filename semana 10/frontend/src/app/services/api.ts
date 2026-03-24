@@ -11,3 +11,13 @@ export const fetchSumSalaryDepto = async() =>{
         throw error;
     }
 };
+
+export const fetchMaxMinValue = async() =>{
+    try {
+        const response = await axios.get(`${API_URL}/high-min-values/products`);
+        return response.data;
+    } catch (error) {
+        console.error("Error en fetch de datos:", error);
+        throw error;
+    }
+};

@@ -54,7 +54,6 @@ const options = {
 
   return (
     <div className="w-full max-w-3xl mx-auto bg-white rounded-2xl shadow-md p-6">
-      {/* Título */}
       {titulo && (
         <h2 className="text-xl font-semibold mb-4 text-gray-700">{titulo}</h2>
       )}
@@ -68,7 +67,6 @@ const options = {
       </button>
     </div>
 
-      {/* Contenedor de la gráfica */}
       <div className="h-80">
         <Bar data={data} options={options} />
       </div>
