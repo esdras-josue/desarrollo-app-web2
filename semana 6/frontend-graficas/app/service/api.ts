@@ -52,3 +52,14 @@ export const fetchMinValue = async () => {
         throw error;
     }
 };
+
+// value-currency
+export const fetchValueCurrency = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/value-currency`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener datos", error);
+        throw error;
+    }
+};
