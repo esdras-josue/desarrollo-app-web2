@@ -33,7 +33,7 @@ export default function Home() {
             onClick={() => router.push("/total-value")}
             className="flex items-center justify-between rounded-xl bg-blue-500 px-6 py-4 text-left text-base font-semibold text-white shadow-md shadow-blue-500/30 transition-all hover:-translate-y-1 hover:bg-blue-600 hover:shadow-lg"
           >
-            <span>Valor total de productos por marca</span>
+            <span>Cantidad total de productos por marca</span>
             <span className="text-xl">📊</span>
           </button>
         </div>
