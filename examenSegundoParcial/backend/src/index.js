@@ -33,6 +33,27 @@ app.get('/api/agv-value-product', async(req, res) =>{
     }
 });
 
+/**-- 12. Calcular el valor total de productos en cada brandCode:
+select brandCode, count(value) valorTotal from product_v6 group by brandCode;; */
+app.get('/api/total-value', async(req, res) => {
+    try {
+        const data = await Producto.findAll({
+            attributes:[
+                'brandCode',
+                [sequelize.fn('COUNT', sequelize.col('value')), 'valorTotal']],
+            group:['brandCode'],
+        });
+
+        if(data.length === 0){
+            res.status(400).json({message: 'No se encontraron datos'});
+        }
+        else{
+            res.status(200).json(data);
+        }
+    } catch (error) {
+        res.status(500).json({message: 'Error al obtener los datos:', error});
+    }
+});
 
 const PORT = 5000;
 app.listen(PORT, () => {

@@ -30,10 +30,10 @@ export default function Home() {
         <div className="mt-10 grid gap-5">
           <button
             type="button"
-            onClick={() => router.push("/max-min-value")}
+            onClick={() => router.push("/total-value")}
             className="flex items-center justify-between rounded-xl bg-blue-500 px-6 py-4 text-left text-base font-semibold text-white shadow-md shadow-blue-500/30 transition-all hover:-translate-y-1 hover:bg-blue-600 hover:shadow-lg"
           >
-            <span>Gráficos Valores max & min</span>
+            <span>Valor total de productos por marca</span>
             <span className="text-xl">📊</span>
           </button>
         </div>
