@@ -30,8 +30,8 @@ export default function page() {
             label: "Valor Total de productos por marca",
             data: values,
             backgroundColor: [
-              "rgba(255, 99, 132, 0.2)",
-              "rgba(54, 162, 235, 0.2)",
+              "rgba(78, 146, 218, 0.89)",
+              "rgba(118, 175, 233, 0.94)",
             ],
           },
         ],
@@ -42,7 +42,7 @@ export default function page() {
   return (
     <div>
       {charData ? (
-        <div style={{ width: '400px', height: '400px', margin: '0 auto' }}>
+        <div style={{ width: '400px', height: '400px', margin: '0 auto', }}>
           {" "}
           <Pie data={charData} />
         </div>

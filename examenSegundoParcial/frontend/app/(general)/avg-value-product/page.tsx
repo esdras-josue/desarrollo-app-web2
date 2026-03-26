@@ -57,7 +57,7 @@ export default function page() {
                         label: 'Valor promedio de productos por categoria',
                         data: countData,
                         fill: true,
-                        borderColor: 'rgba(3, 3, 3, 1)',   // color de la línea
+                        borderColor: 'rgba(250, 249, 249, 1)',   // color de la línea
                         backgroundColor: 'rgba(75, 192, 192, 0.2)', // relleno suave
                         pointBackgroundColor: 'rgb(75, 192, 192)',
                         pointBorderColor: '#fff',
