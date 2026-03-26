@@ -35,7 +35,7 @@ export default function page() {
         label: "Valor promedio de productos",
         data: [],
         fill: true,
-        borderColor: "rgb(75, 192, 192)", // color de la línea
+        borderColor: "rgba(2, 5, 5, 1)", // color de la línea
         backgroundColor: "rgba(75, 192, 192, 0.2)", // relleno suave
         pointBackgroundColor: "rgb(75, 192, 192)",
         pointBorderColor: "#fff",
@@ -59,7 +59,7 @@ export default function page() {
             label: "Valor promedio de productos por categoria",
             data: countData,
             fill: true,
-            borderColor: "rgba(250, 249, 249, 1)", // color de la línea
+            borderColor: "rgba(15, 226, 226, 0.96)", // color de la línea
             backgroundColor: "rgba(75, 192, 192, 0.2)", // relleno suave
             pointBackgroundColor: "rgb(75, 192, 192)",
             pointBorderColor: "#fff",

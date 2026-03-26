@@ -29,11 +29,12 @@ export default function page() {
         labels: labels,
         datasets: [
           {
-            label: "Cantidad de productos por marca",
+            label: "Cantidad de productos",
             data: values,
             backgroundColor: [
-              "rgba(78, 146, 218, 0.89)",
-              "rgba(118, 175, 233, 0.94)",
+              "rgba(54, 162, 235, 0.8)",
+              "rgba(255, 99, 132, 0.8)",
+              "rgba(153, 102, 255, 0.8)",
             ],
           },
         ],
